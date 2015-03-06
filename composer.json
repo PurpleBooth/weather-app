@@ -1,0 +1,40 @@
+{
+  "name": "purplebooth/weather-app",
+  "require": {
+    "php": ">=5.5.9",
+    "silex/silex": "^1.2",
+    "guhelski/forecast-php": "dev-master",
+    "symfony/event-dispatcher": "^2.6.4",
+    "willdurand/geocoder": "^2.8",
+    "twig/twig": "~1.18"
+  },
+  "require-dev": {
+    "behat/behat": "^3.0.6",
+    "behat/mink": "^1.6",
+    "behat/mink-zombie-driver": "*",
+    "behat/mink-extension": "*",
+    "heroku/heroku-buildpack-php": "*",
+    "phpunit/phpunit": "^4.5.0",
+    "squizlabs/php_codesniffer": "^2.0",
+    "phpmd/phpmd": "*",
+    "mockery/mockery": "*"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Billie Alice Thompson",
+      "email": "billie@purplebooth.co.uk"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PurpleBooth\\WeatherApp\\Test\\Context\\": ["test/features/contexts"],
+      "PurpleBooth\\WeatherApp\\": ["src/"]
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.0-dev"
+    }
+  }
+}

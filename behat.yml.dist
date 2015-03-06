@@ -1,0 +1,20 @@
+default:
+    autoload:
+        '': %paths.base%/test/bootstrap
+    suites:
+        api:
+            paths:
+                - %paths.base%/test/features/api
+            contexts:
+                - PurpleBooth\WeatherApp\Test\Context\ApiContext
+                - Behat\MinkExtension\Context\MinkContext
+        website:
+            paths:
+                - %paths.base%/test/features/website
+            contexts:
+                - PurpleBooth\WeatherApp\Test\Context\WebsiteContext
+                - Behat\MinkExtension\Context\MinkContext
+    extensions:
+        Behat\MinkExtension:
+            zombie: ~
+            base_url: http://test.weather-app/
