@@ -66,6 +66,7 @@ coding_style:
 tools:
     php_cs_fixer:
         config: { level: all }
+    jshint: true
 
 build:
     dependencies:
