@@ -20,15 +20,15 @@ $appEnv = getenv("APP_ENV");
 
 $app['debug'] = true;
 
-$app['eventDispatcher'] = $app->share(function () use ($app) {
+$app['eventDispatcher'] = $app->share(function() use ($app) {
     return new EventDispatcher();
 });
 
-$app['service.forecast'] = $app->share(function () use ($app) {
+$app['service.forecast'] = $app->share(function() use ($app) {
     return new Forecast(getenv('FORECAST_IO_KEY'));
 });
 
-$app['service.geocode'] = $app->share(function () use ($app) {
+$app['service.geocode'] = $app->share(function() use ($app) {
     $geocoder = new GoogleMapsProvider(
         new CurlHttpAdapter()
     );
@@ -36,7 +36,7 @@ $app['service.geocode'] = $app->share(function () use ($app) {
     return $geocoder;
 });
 
-$app['service.weather'] = $app->share(function () use ($app) {
+$app['service.weather'] = $app->share(function() use ($app) {
     if (getenv("APP_ENV") === 'test') {
         $weather = new StaticWeatherService();
     } else {
@@ -50,12 +50,12 @@ $app['service.weather'] = $app->share(function () use ($app) {
     return $weather;
 });
 
-$app['postcode.api.controller'] = $app->share(function () use ($app) {
+$app['postcode.api.controller'] = $app->share(function() use ($app) {
     return new PostcodeApiController($app['service.weather']);
 });
 
 
-$app['postcode.website.controller'] = $app->share(function () use ($app) {
+$app['postcode.website.controller'] = $app->share(function() use ($app) {
     return new PostcodeWebsiteController($app['twig']);
 });
 
