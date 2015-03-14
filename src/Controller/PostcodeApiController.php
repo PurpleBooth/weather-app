@@ -43,7 +43,7 @@ class PostcodeApiController
             JsonResponse::HTTP_OK
         );
 
-        if (!$weatherServiceResponse) {
+        if ($weatherServiceResponse === null) {
             $jsonResponse->setStatusCode(JsonResponse::HTTP_NOT_FOUND);
         }
 
