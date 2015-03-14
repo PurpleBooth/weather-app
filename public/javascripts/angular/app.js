@@ -14,7 +14,7 @@ weatherApp.controller('IndexController', ['$scope', 'Weather', function ($scope,
 
     $scope.updateWeather = function (location) {
         Weather.get({'location':location}, function(weather) {
-            $scope.weatherText = weather['description'];
+            $scope.weatherText = weather.description;
         }, function(errorResult) {
             if(errorResult.status === 404) {
                 $scope.weatherText = "Unknown";
