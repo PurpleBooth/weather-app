@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1c9ce60e1386c42bfeea1749cd8183ae",
+    "hash": "3356d0d1c2be066ec8420a122324abdf",
     "packages": [
         {
             "name": "guhelski/forecast-php",
