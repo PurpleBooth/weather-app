@@ -1,0 +1,99 @@
+checks:
+    php:
+        code_rating: true
+        duplication: true
+        remove_extra_empty_lines: true
+        fix_use_statements:
+            remove_unused: true
+            preserve_multiple: false
+            preserve_blanklines: false
+            order_alphabetically: true
+        fix_line_ending: true
+        return_doc_comments: true
+        parameter_doc_comments: true
+        return_doc_comment_if_not_inferrable: true
+        param_doc_comment_if_not_inferrable: true
+        more_specific_types_in_doc_comments: true
+        no_goto: true
+        uppercase_constants: true
+        simplify_boolean_return: true
+        properties_in_camelcaps: true
+        prefer_while_loop_over_for_loop: true
+        parameters_in_camelcaps: true
+        optional_parameters_at_the_end: true
+        newline_at_end_of_file: true
+        line_length:
+            max_length: '120'
+        function_in_camel_caps: true
+        classes_in_camel_caps: true
+        avoid_todo_comments: true
+        avoid_perl_style_comments: true
+        avoid_fixme_comments: true
+        align_assignments: true
+        use_self_instead_of_fqcn: true
+        phpunit_assertions: true
+        avoid_multiple_statements_on_same_line: true
+        avoid_unnecessary_concatenation: true
+
+coding_style:
+    php:
+        spaces:
+            around_operators:
+                concatenation: true
+        braces:
+            classes_functions:
+                class: new-line
+                function: new-line
+                closure: end-of-line
+            if:
+                opening: end-of-line
+            for:
+                opening: end-of-line
+            while:
+                opening: end-of-line
+            do_while:
+                opening: end-of-line
+            switch:
+                opening: end-of-line
+            try:
+                opening: end-of-line
+        upper_lower_casing:
+            keywords:
+                general: lower
+            constants:
+                true_false_null: lower
+
+tools:
+    php_cs_fixer:
+        config: { level: all }
+
+build:
+    dependencies:
+        before:
+            - sudo apt-get install -y software-properties-common
+            - sudo add-apt-repository -y ppa:ondrej/php5
+            - sudo ln -s $(pwd) /vagrant
+            - curl -sL https://deb.nodesource.com/setup | sudo bash -
+            - sudo apt-get install -y build-essential php5-fpm nginx nodejs
+            - sudo npm install -g zombie
+            - sudo cp provisioning/nginx-sites/test /etc/nginx/sites-enabled/default
+            - sudo ln -s $(pwd) /vagrant
+            - sudo service nginx restart
+    environment:
+        php:
+            version: 5.5.12
+            ini:
+                'date.timezone': 'UTC'
+        hosts:
+            weather-app: '127.0.0.1'
+            test.weather-app: '127.0.0.1'
+            dev.weather-app: '127.0.0.1'
+    tests:
+        override:
+            -
+                command: 'vendor/bin/phpunit --coverage-clover=coverage'
+                coverage:
+                    file: 'coverage'
+                    format: 'php-clover'
+            -
+                command: 'NODE_PATH=/usr/lib/node_modules vendor/bin/behat'
