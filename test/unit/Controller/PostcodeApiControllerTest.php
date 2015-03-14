@@ -45,6 +45,6 @@ class PostcodeApiControllerTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->weatherService = m::mock('PurpleBooth\WeatherApp\Service\WeatherService');
-        $this->instance = new PostcodeApiController($this->weatherService);
+        $this->instance       = new PostcodeApiController($this->weatherService);
     }
 }
