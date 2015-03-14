@@ -17,4 +17,4 @@ default:
     extensions:
         Behat\MinkExtension:
             zombie: ~
-            base_url: http://test.weather-app/
+            base_url: http://test.weather-app:8223/

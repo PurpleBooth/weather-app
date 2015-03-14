@@ -20,10 +20,16 @@ Vagrant.configure(2) do |config|
       mv composer.phar /usr/local/bin/composer
 PROVISIONSCRIPT
 
-    weather.vm.provision "file", source: "provisioning/nginx-sites/default", destination: "/tmp/nginx-default-site"
+    weather.vm.provision "file", source: "provisioning/nginx-sites/dev", destination: "/tmp/nginx-dev-site"
+    weather.vm.provision "file", source: "provisioning/nginx-sites/test", destination: "/tmp/nginx-test-site"
 
     weather.vm.provision "shell", inline: <<PROVISIONSCRIPT
-      mv /tmp/nginx-default-site /etc/nginx/sites-enabled/default
+      mv /tmp/nginx-dev-site /etc/nginx/sites-available/dev
+      ln -s /etc/nginx/sites-available/dev /etc/nginx/sites-enabled/dev
+      mv /tmp/nginx-test-site /etc/nginx/sites-available/test
+      ln -s /etc/nginx/sites-available/test /etc/nginx/sites-enabled/test
+      rm /etc/nginx/sites-enabled/default
+
       service nginx restart
 PROVISIONSCRIPT
 
