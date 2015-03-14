@@ -1,5 +1,7 @@
 # Weather app
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PurpleBooth/weather-app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/PurpleBooth/weather-app/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/PurpleBooth/weather-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/PurpleBooth/weather-app/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/PurpleBooth/weather-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/PurpleBooth/weather-app/build-status/master)
+
 This is a small combination AngularJS & Silex app, it allows you to search for the current weather in your area.
 
 You can see it running here, without any deployment: https://weather-app-purplebooth.herokuapp.com/
