@@ -28,7 +28,7 @@ class PostcodeWebsiteControllerTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->twig = m::mock('Twig_Environment');
+        $this->twig     = m::mock('Twig_Environment');
         $this->instance = new PostcodeWebsiteController($this->twig);
     }
 }
